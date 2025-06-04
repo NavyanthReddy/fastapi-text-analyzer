@@ -7,7 +7,7 @@ app = FastAPI()
 class TextInput(BaseModel):
     text: str
 
-# Load a lightweight sentiment model (better for low memory environments)
+# ✅ Make sure this line is correct:
 sentiment_analyzer = pipeline(
     "sentiment-analysis",
     model="cardiffnlp/twitter-roberta-base-sentiment"
