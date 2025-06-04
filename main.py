@@ -7,8 +7,11 @@ app = FastAPI()
 class TextInput(BaseModel):
     text: str
 
-# Load model once
-sentiment_analyzer = pipeline("sentiment-analysis")
+# Load a lightweight sentiment model (better for low memory environments)
+sentiment_analyzer = pipeline(
+    "sentiment-analysis",
+    model="cardiffnlp/twitter-roberta-base-sentiment"
+)
 
 @app.post("/analyze/")
 def analyze_text(input: TextInput):
